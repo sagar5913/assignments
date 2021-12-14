@@ -1,0 +1,591 @@
+.write the output for the below program and mention ther type of the variables?;
+/**/
+data x;
+
+length x $10.;
+
+x=" ";*three spaces inside the quotes;
+
+a=length(x);
+
+b=lengthn(x);
+
+c=lengthc(x);
+
+run;
+/*LENGTH - LEADING +TEXT*/
+/*LENGTHN - WORKS ON EMPTY SPACES  - SO ITS 3 */
+/*LENGTHC  - LEADING +TRAILING +TEXT SPACES*/
+/*OUTPUT */
+
+/*X        A      B         C*/
+/*0        1      3         1*/
+
+2.what are the length of variables y and z?;
+
+data Y;
+
+X="aculore";
+
+Y=substr(x,1,4);
+
+Z=length(y);
+
+run;
+/*   ANS   to find the length of the variables*/
+/*why the b length came 12*/
+data Y;
+
+X="aculore";
+
+Y=substr(x,1,4);
+Z=length(y);
+a=length(y);
+b=length(Z);
+run;
+/*Numeric values have been converted to character values at the places given by:
+      (Line):(Column). what does this mean 
+*/
+/*output - 
+type of variables
+x= charac variable
+y= charac variable
+z= charac variable */
+/*OUTPUT 
+X            Y       Z  
+aculore      acul    4 */
+
+
+3.write the output for the below program?;
+
+data grades;
+
+infile datalines missover;
+
+input name $ grade;
+
+performance = ifc(grade>80, 'Pass', 'Needs Improvement',missing(grade));
+
+datalines;
+
+John 74
+
+Kareem 89
+
+Kati
+
+Maria 92
+
+;
+
+run;
+/*what does tell  - infile datalines missover*/
+/*type of variables*/
+
+/*name= charc varible*/
+/*grade= numeric variable*/
+/*performance = charac variable.*/
+name   grade      performance 
+john     74        ifc('pass' 'needs improvemnt')
+
+
+4.Write the output for the below program?;
+/*no idea how this count and repeat works */
+data syt;
+
+x="this is SAS base sas base sas this sas";
+
+y=repeat("sas",count(x,"sas","i")-1);
+
+run;
+
+/*4  ans*/
+/*for above data set - */
+/*output*/
+x                                                       y
+this is SAS base sas base sas this sas             /*sas string we need - counting from x variable-
+                                                   sas i times then -1 (if comes 3 then 3-1=2)*/
+ 
+
+5) Write ouptut and log notes of the following?;
+
+
+/*  EX : data sub;
+         a="var";
+         b="vam";
+         c=translate(a,"n", "r");
+         run;     */
+data yes_no;
+
+length char $ 1.;
+
+input char @@;
+
+x=input(translate(upcase(char),'01','NY'),1.);
+
+cards;
+
+N Y n 2 y A B 0 1
+
+run;
+/*log   char     x
+         -      .
+         */
+/*5  ans   char is charecter variable length given 1 by using input function . IN NY PLACE TO 01
+what input does is converts charecter values to numeric (gives back in same format)  */
+/*out put      
+char    x
+N        0
+Y        1
+n        0
+2        2
+y        1
+A        A
+B        B
+0        0
+1        1
+in N place is 0 and Y place is 1 , not like 1 is is Y*/
+6)Write output of the following?
+
+data sub_string;
+
+input id $ 1-9;
+
+length state $ 2;
+
+state=substr(id,1,2);
+
+num=input(substr(id,7,3),3.);
+
+cards;
+
+NYXXXX123
+
+NJ1234567
+
+;
+
+run;
+
+
+/*6  ans   
+here 3 varaibles id, state, num - 
+output - 
+id            state           num 
+NYXXXX123       NY            123
+NJ1234567       NJ            567*/
+/* 1 need to ask how it reads data in input method.*/
+7)Write Ouput of the following?
+
+data acl;
+
+a='ABC.DEF (X=Y)';
+
+b='X=Y';
+
+x=index(a,b);
+
+put x;
+
+run;
+/*7  ans 
+output   
+a                  b          x
+ABC.DEF (X=Y)      X=Y        12*/
+/*how to find a,b variables positions.*/
+
+
+8)Write ouptut of the following?
+
+data ac2;
+
+x='Math A English B Physics A';
+
+y=compress(x,'ABCD','k');
+
+put y;
+
+run;
+/*compress function - it does delete or keep 2nd argument in third with modifier
+defalut it removes 2nd arghument and what does k do here*/
+/*8 ans 
+output
+x                               y
+Math A English B Physics A       */
+
+                                
+
+9)Which of the following code calculates the mean of variables var1, var2, var3, and var4.
+
+a) MEAN(var1-var4)
+
+b) MEAN(of var1-var4)
+
+c) MEAN(var1 var2 var3 var4)
+
+d) MEAN(var1)
+
+/*EX :data sub1;
+      a=4;
+      b=4;
+      c=2;
+      d=2;
+      e=mean(of a-b);
+      f=mean(a b c d );
+      run;*/
+/*ans   B */
+
+
+10) what output you will get if you execute the program?
+
+JB=”FA”;
+
+JB1=”1”;
+
+C=JB||JB1
+
+a)FA1
+
+b)FA
+
+c)FA 1
+/* 10   ans   here we are concatinating the JB, JB1
+ans is   a (FA1)*/
+
+/*need log exp[laining */
+11)write the log for below program for put statements?
+
+data _null_;
+
+length newstatement1 $34;
+
+statement = "I enjoy going to PSPK conferences.";
+
+newstatement1 = tranwrd(statement,"PSPK", "SGS");
+
+newstatement2 = tranwrd(statement,"PSPK", "SGS");
+
+length_newstatement1 = lengthc(newstatement1);
+
+length_newstatement2 = lengthc(newstatement2);
+
+put length_newstatement1 = ;
+
+put length_newstatement2 = ;
+
+run;
+
+12) write output for below program.
+
+data aculore1;
+
+input subj;
+
+if mod(subj,2) eq 1 then group="A";
+
+else group="B";
+
+cards;
+
+1 2 3 4 5 6 @@
+
+;
+
+run;
+/*WHAT IS MOD EXPRESSION IN SAS HOW IT WORKS*/
+
+13)data abc;
+
+x=1;output;
+
+x=2.1;output;
+
+x=3.15;output;
+
+run;
+
+data abc1;
+
+set abc;
+
+y=length(scan(put(x,best.),2,"."));
+
+run;
+/*LENGTH - COUNTS LEADING +TEXT
+SCAN - TO PICK A WORD IN SENTENCE
+PUT - RESTURNS VALUE USING SPECIFIED FORMAT */
+/*HOW TO UNDERSTAND DATA - WILL EXPALIN MY UNDERSTANDING */
+
+14)write the output for the below program?
+
+data count_char;
+
+input string$20.;
+
+num_a=countc(string,"A");
+
+num_Aa=countc(string,"a""i");
+
+not_a=countc(string,"A""v");
+
+datalines;
+
+uppeR A And Lower a
+
+abAB
+
+BBBbbb
+
+;
+
+run;
+/*HAVE TO UNDERSTAND*/
+15)write the output for the below program?
+
+data acul;
+
+input date $12.;
+
+cards;
+
+2013-02-01
+
+2014-02-20
+
+2016-02-01
+
+;
+
+run;
+
+data aculore2;
+
+set acul;
+
+date2=input(date,yymmdd10.);
+
+sd=intnx("day",date2,28,"end")
+
+format sd date9.;
+
+run;
+
+16. write the output for avg1, avg2, avg3;
+
+data a;
+
+input a b c d e f;
+
+if nmiss(a,b,c,d,e,f) ge 1 then avg1 = mean(a,b,c,d,e);
+
+if nmiss(a,b,c,d,e,f) ge 2 then avg2 = mean(a,b,c,d,e);
+
+if nmiss(a,b,c,d,e,f) ge 3 then avg3 = mean(a,b,c,d,e);
+
+cards;
+
+1 2 . 4 . 6
+
+1 . 3 . 5 6
+
+. 2 . . 5 .
+
+;
+
+run;
+
+17. Write the output.
+
+data b;
+
+day1=intck('day365','31dec2009'd,'01jan2010'd);
+
+day2=intnx('day', '01FEB2010'd, 7);
+
+format day2 date9.;
+
+run;
+
+18. write the output;
+
+DATA STARS;
+
+INPUT SBP DBP @@;
+
+LENGTH SBP_CHK DBP_CHK $ 4;
+
+SBP_CHK = PUT(SBP,3.);
+
+DBP_CHK = PUT(DBP,3.);
+
+IF SBP GT 160 THEN SUBSTR(SBP_CHK,4,1) = '*';
+
+IF DBP GT 90 THEN SUBSTR(DBP_CHK,4,1) = '*';
+
+DATALINES;
+
+120 80 180 92 200 110
+
+;
+
+19. Write the output for below program?
+
+data chk;
+
+input var@@;
+
+var1=lag(dif(var));
+
+var2=dif(lag(var));
+
+cards;
+
+2 3 4 5 6 7
+
+;
+
+run;
+
+20).
+
+data acl;
+
+v=' we are from hyderabad';
+
+a=indexw(v,'e');
+
+b=countc(v,'e');
+
+c=find(v,'e');
+
+run;
+
+write the output;
+
+21).
+
+data x;
+
+input usubjid $40.;
+
+cards;
+
+wer0001
+
+wer00010
+
+wer00001
+
+wer011
+
+;
+
+create a variable subjid by taking last two digits from usubjid
+
+22). write the output for below program.
+
+data ds1;
+
+informat first last $30.;
+
+input first last;
+
+first = lowcase(first);
+
+last = lowcase(last);
+
+substr(first,1) = upcase(substr(first,1));
+
+substr(last,1,1) = upcase(substr(last,1,1));
+
+DATALINES;
+
+ronald cODy
+
+THomaS eDISON
+
+albert einstein
+
+;
+
+run;
+
+23. write the output for below program.
+
+DATA ds2;
+
+input #1 @1 name $20.
+
+#2 @1 address $30.
+
+#3 @1 city $15.
+
+@20 state $2.
+
+@25 zip $5.;
+
+name = compbl(name);
+
+address = compbl(address);
+
+city = compbl(city);
+
+DATALINES;
+
+RON CODY
+
+89 LAZY BROOK ROAD
+
+FLEMINGTON NJ 08822
+
+BILL BROWN
+
+28 CATHY STREET
+
+NORTH CITY NY 11518
+
+;
+
+run;
+
+24.
+
+data chk1;
+
+output;
+
+x=1;
+
+y=2;
+
+z=3;
+
+output;
+
+a=n(x,y,z);
+
+run;
+
+25.
+
+data chk2;
+
+output;
+
+x=-1.2;
+
+y=-2.4;
+
+z=-3.3;
+
+z1=round(x);
+
+z11=ceil(y);
+
+z12=floor(y);
+
+output;
+
+a=n(x,y,z);
+
+run;
